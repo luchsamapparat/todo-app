@@ -14,6 +14,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
             .allowedOrigins(
                 "capacitor://localhost", // iOS
                 "http://localhost", // Android
+                "https://todo-app.luchsamappar.at", // web
                 "http://localhost:4200" // local
             )
             .allowedMethods("GET", "POST")

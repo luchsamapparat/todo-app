@@ -49,7 +49,7 @@ async function followRedirect(response: ResponseWithRedirect) {
 
 const toApiUrl = (url: string) => {
     const apiPath = url.startsWith('/api') ? url : `/api${url}`;
-    return `https://holisticon-todo-app.azurewebsites.net${apiPath}`;
+    return `https://todo-app-api.luchsamappar.at${apiPath}`;
 };
 
 interface ResponseWithRedirect extends Response {
