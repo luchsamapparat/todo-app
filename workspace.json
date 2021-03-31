@@ -25,7 +25,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "root": "apps/todo-app-nextjs",
             "outputPath": "dist/apps/todo-app-nextjs"
@@ -55,7 +57,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/todo-app-nextjs"],
+          "outputs": [
+            "coverage/apps/todo-app-nextjs"
+          ],
           "options": {
             "jestConfig": "apps/todo-app-nextjs/jest.config.js",
             "passWithNoTests": true
@@ -64,33 +68,64 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/todo-app-nextjs/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/todo-app-nextjs/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         }
       }
     },
-    "todo-app-nextjs-e2e": {
-      "root": "apps/todo-app-nextjs-e2e",
-      "sourceRoot": "apps/todo-app-nextjs-e2e/src",
+    "todo-app-spring": {
       "projectType": "application",
+      "root": "apps/todo-app-spring",
+      "sourceRoot": "apps/todo-app-spring/src",
       "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
+        "run": {
+          "executor": "@nxrocks/nx-spring-boot:run",
           "options": {
-            "cypressConfig": "apps/todo-app-nextjs-e2e/cypress.json",
-            "tsConfig": "apps/todo-app-nextjs-e2e/tsconfig.e2e.json",
-            "devServerTarget": "todo-app-nextjs:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "todo-app-nextjs:serve:production"
-            }
+            "root": "apps/todo-app-spring"
           }
         },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
+        "serve": {
+          "executor": "@nxrocks/nx-spring-boot:serve",
           "options": {
-            "lintFilePatterns": ["apps/todo-app-nextjs-e2e/**/*.{js,ts}"]
+            "root": "apps/todo-app-spring"
+          }
+        },
+        "test": {
+          "executor": "@nxrocks/nx-spring-boot:test",
+          "options": {
+            "root": "apps/todo-app-spring"
+          }
+        },
+        "clean": {
+          "executor": "@nxrocks/nx-spring-boot:clean",
+          "options": {
+            "root": "apps/todo-app-spring"
+          }
+        },
+        "buildJar": {
+          "executor": "@nxrocks/nx-spring-boot:buildJar",
+          "options": {
+            "root": "apps/todo-app-spring"
+          }
+        },
+        "buildWar": {
+          "executor": "@nxrocks/nx-spring-boot:buildWar",
+          "options": {
+            "root": "apps/todo-app-spring"
+          }
+        },
+        "buildImage": {
+          "executor": "@nxrocks/nx-spring-boot:buildImage",
+          "options": {
+            "root": "apps/todo-app-spring"
+          }
+        },
+        "buildInfo": {
+          "executor": "@nxrocks/nx-spring-boot:buildInfo",
+          "options": {
+            "root": "apps/todo-app-spring"
           }
         }
       }

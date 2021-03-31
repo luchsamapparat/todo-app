@@ -18,7 +18,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -26,9 +31,8 @@
     "todo-app-nextjs": {
       "tags": []
     },
-    "todo-app-nextjs-e2e": {
-      "tags": [],
-      "implicitDependencies": ["todo-app-nextjs"]
+    "todo-app-spring": {
+      "tags": []
     }
   }
 }
