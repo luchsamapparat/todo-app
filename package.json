@@ -5,8 +5,8 @@
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
-    "build": "nx build",
-    "build:backend": "nx buildImage --project todo-app-spring",
+    "build": "nx export todo-app-nextjs",
+    "build:api": "nx buildImage --project todo-app-spring",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
