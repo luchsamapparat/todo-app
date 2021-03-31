@@ -1,7 +1,7 @@
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
 export async function get(url: string) {
-    const response = await fetch(toApiUrl(`/api${url}`), {
+    const response = await fetch(toApiUrl(url), {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
@@ -21,14 +21,8 @@ export async function submit<T = any>(url: string, method: Method, jsonBody: T) 
 
     return responseBody;
 }
-
-const toApiUrl = (url: string) => {
-    const isBrowser = typeof window !== 'undefined';
-    return isBrowser ? url : `${process.env.NEXT_PUBLIC_HOST}${url}`;
-};
-
 async function submitUsingFetch<T = any>(url: string, method: Method, jsonBody: T) {
-    const response = await fetch(toApiUrl(`/api${url}`), {
+    const response = await fetch(toApiUrl(url), {
         method,
         headers: {
             'Accept': 'application/json',
@@ -45,13 +39,18 @@ async function submitUsingFetch<T = any>(url: string, method: Method, jsonBody: 
 }
 
 async function followRedirect(response: ResponseWithRedirect) {
-    return fetch(response.headers.get('Location'), {
+    return fetch(toApiUrl(response.headers.get('Location')), {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
     });
 }
+
+const toApiUrl = (url: string) => {
+    const apiPath = url.startsWith('/api') ? url : `/api${url}`;
+    return `https://holisticon-todo-app.azurewebsites.net${apiPath}`;
+};
 
 interface ResponseWithRedirect extends Response {
     headers: Response['headers'] & {

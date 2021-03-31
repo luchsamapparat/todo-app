@@ -33,10 +33,10 @@ const Tasks: FunctionComponent = () => {
     );
 
     return <>
-        (tasks === null) ? null :
+        {(tasks === null) ? null :
             (tasks.length === 0) ?
                 <EmptyTaskList text="All done!" /> :
-                <TaskList tasks={tasks} onCompleteTask={handleCompleteTask} />
+                <TaskList tasks={tasks} onCompleteTask={handleCompleteTask} />}
 
         <AddTaskForm onAddTask={handleAddTask} />
     </>;
