@@ -40,6 +40,8 @@ const AddTaskForm: FunctionComponent<AddTaskFormProps> = ({ onAddTask }) => {
 
     return (
         <form noValidate onChange={handleChange} onSubmit={handleSubmit}>
+            <h6 className="ion-padding-top">Add a Task</h6>
+
             <IonList>
                 <DescriptionInput
                     value={description}
