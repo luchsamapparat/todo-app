@@ -1,5 +1,6 @@
-import React, { FormEvent, FunctionComponent } from 'react';
-import { getInvalidFormControlCssClass, Violation } from '../../lib/validation';
+import { IonDatetime, IonItem, IonText } from '@ionic/react';
+import React, { FunctionComponent } from 'react';
+import { Violation } from '../../lib/validation';
 
 type DueDateInputProps = {
     value: string | null,
@@ -8,30 +9,32 @@ type DueDateInputProps = {
 };
 
 const DueDateInput: FunctionComponent<DueDateInputProps> = ({ value, onChange, violations }) => {
-    const handleInput = ({ currentTarget }: FormEvent<HTMLInputElement>) => currentTarget.setCustomValidity('');
-    const handleInvalid = ({ currentTarget }: FormEvent<HTMLInputElement>) => currentTarget.setCustomValidity('Please pick a future date.');
+    const today = new Date();
+    const min = toIsoDate(today);
+    const max = (today.getFullYear() + 10).toString();
 
-    const today = toIsoDate(new Date());
-
-    const handleChange = (dueDate: string) => (dueDate.length === 0) ? onChange(null) : onChange(dueDate);
+    const handleChange = (dueDate: string) => onChange(dueDate?.substr(0, 10));
 
     return (
-        <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 mb-3">
-            <label htmlFor="addTask-dueDate" className="form-label">Due Date</label>
-            <input
-                type="date"
-                id="addTask-dueDate"
-                value={(value === null) ? '' : value}
-                className={`form-control due-date ${getInvalidFormControlCssClass(violations)}`}
-                min={today}
-                onInput={handleInput}
-                onInvalid={handleInvalid}
-                onChange={e => handleChange(e.target.value)}
-            />
+        <>
+            <IonItem>
+                <IonDatetime
+                    value={value}
+                    min={min}
+                    max={max}
+                    displayFormat="DD.MM.YYYY"
+                    placeholder="Select a Due Date (optional)"
+                    onIonChange={e => handleChange(e.detail.value)}
+                />
+            </IonItem>
             {violations?.map(violation => (
-                <div className="invalid-feedback" key={violation.message}>{violation.message}</div>
+                <IonText color="danger" key={violation.message}>
+                    <p className="ion-padding-start">
+                        {violation.message}
+                    </p>
+                </IonText>
             ))}
-        </div>
+        </>
     );
 };
 

@@ -1,3 +1,4 @@
+import { IonText } from '@ionic/react';
 import TimeAgo from 'javascript-time-ago';
 import de from 'javascript-time-ago/locale/de';
 import en from 'javascript-time-ago/locale/en';
@@ -15,7 +16,7 @@ const CompletedDate: FunctionComponent<CompletedDateProps> = ({ completedDate })
         return null;
     }
 
-    return <span className="text-secondary ps-2">{formatDate(completedDate, language)}</span>;
+    return <IonText color="medium" className="ion-padding-start">{formatDate(completedDate, language)}</IonText>;
 };
 
 TimeAgo.addLocale(de);

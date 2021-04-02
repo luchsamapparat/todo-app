@@ -1,5 +1,6 @@
-import React, { FormEvent, FunctionComponent } from 'react';
-import { getInvalidFormControlCssClass, Violation } from '../../lib/validation';
+import { IonInput, IonItem, IonText } from '@ionic/react';
+import React, { FunctionComponent } from 'react';
+import { Violation } from '../../lib/validation';
 
 type DescriptionInputProps = {
     value: string,
@@ -8,28 +9,26 @@ type DescriptionInputProps = {
 };
 
 const DescriptionInput: FunctionComponent<DescriptionInputProps> = ({ value, onChange, violations }) => {
-    const handleInput = ({ currentTarget }: FormEvent<HTMLInputElement>) => currentTarget.setCustomValidity('');
-    const handleInvalid = ({ currentTarget }: FormEvent<HTMLInputElement>) => currentTarget.setCustomValidity('Please enter a task.');
-
     return (
-        <div className="col-xl-9 col-lg-8 col-md-6 col-sm-6 mb-3">
-            <label htmlFor="addTask-description" className="form-label">New Task</label>
-            <input
-                type="text"
-                id="addTask-description"
-                value={value}
-                className={`form-control description ${getInvalidFormControlCssClass(violations)}`}
-                placeholder="Add as Task..."
-                required
-                minLength={1}
-                onInput={handleInput}
-                onInvalid={handleInvalid}
-                onChange={e => onChange(e.target.value)}
-            />
+        <>
+            <IonItem>
+                <IonInput
+                    value={value}
+                    placeholder="Describe your Task"
+                    required
+                    minlength={1}
+                    onIonChange={e => onChange(e.detail.value)}
+                />
+
+            </IonItem>
             {violations?.map(violation => (
-                <div className="invalid-feedback" key={violation.message}>{violation.message}</div>
+                <IonText color="danger" key={violation.message}>
+                    <p className="ion-padding-start">
+                        {violation.message}
+                    </p>
+                </IonText>
             ))}
-        </div>
+        </>
     );
 };
 

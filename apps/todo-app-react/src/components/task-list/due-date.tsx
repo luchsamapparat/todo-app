@@ -1,3 +1,4 @@
+import { IonText } from '@ionic/react';
 import React, { FunctionComponent, useContext } from 'react';
 import { LanguageContext } from '../../lib/language';
 
@@ -12,7 +13,7 @@ const DueDate: FunctionComponent<DueDateProps> = ({ dueDate }) => {
         return null;
     }
 
-    return <span className="text-secondary ps-2">{formatDate(dueDate, language)}</span>;
+    return <IonText color="medium" className="ion-padding-start">{formatDate(dueDate, language)}</IonText>;
 };
 
 const formatDate = (date: string, language: string) => new Intl.DateTimeFormat(

@@ -1,3 +1,5 @@
+import { IonCard, IonIcon, IonItem, IonText } from '@ionic/react';
+import { checkmark } from 'ionicons/icons';
 import React, { FunctionComponent } from 'react';
 
 type EmptyListAlertProps = {
@@ -5,7 +7,12 @@ type EmptyListAlertProps = {
 }
 
 const EmptyListAlert: FunctionComponent<EmptyListAlertProps> = ({ text }) => (
-    <p className="alert alert-success mb-5" role="alert">{text}</p>
+    <IonCard>
+        <IonItem color="success">
+            <IonIcon slot="start" icon={checkmark} />
+            <IonText>{text}</IonText>
+        </IonItem>
+    </IonCard>
 );
 
 export default EmptyListAlert;

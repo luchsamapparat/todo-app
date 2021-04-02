@@ -1,3 +1,4 @@
+import { IonButton, IonList } from '@ionic/react';
 import React, { FormEvent, FunctionComponent, useState } from 'react';
 import { NewTask } from '../../lib/task';
 import { ValidationError } from '../../lib/validation';
@@ -37,26 +38,21 @@ const AddTaskForm: FunctionComponent<AddTaskFormProps> = ({ onAddTask }) => {
         }
     };
 
-    const formValidatedCssClass = (isDirty && validationError === null) ? 'was-validated' : '';
-
     return (
-        <form className={`add-task-form row needs-validation ${formValidatedCssClass}`} onChange={handleChange} onSubmit={handleSubmit}>
-            <DescriptionInput
-                value={description}
-                violations={getViolations(validationError, 'description')}
-                onChange={setDescription} />
+        <form noValidate onChange={handleChange} onSubmit={handleSubmit}>
+            <IonList>
+                <DescriptionInput
+                    value={description}
+                    violations={getViolations(validationError, 'description')}
+                    onChange={setDescription} />
 
-            <DueDateInput
-                value={dueDate}
-                violations={getViolations(validationError, 'dueDate')}
-                onChange={setDueDate} />
+                <DueDateInput
+                    value={dueDate}
+                    violations={getViolations(validationError, 'dueDate')}
+                    onChange={setDueDate} />
+            </IonList>
 
-            <div className="col-xl-1 col-lg-1 col-md-2 col-sm-2 mb-3 d-flex flex-wrap align-content-start">
-                <button className="add-task btn btn-primary flex-fill" style={{ marginTop: '32px' }}>
-                    Add{' '}
-                    <span className="d-sm-none">Task</span>
-                </button>
-            </div>
+            <IonButton className="ion-margin-top" type="submit" expand="block">Add Task</IonButton>
         </form>
     );
 };

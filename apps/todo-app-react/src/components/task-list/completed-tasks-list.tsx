@@ -1,3 +1,4 @@
+import { IonList } from '@ionic/react';
 import React, { FunctionComponent } from 'react';
 import { Task } from '../../lib/task';
 import CompletedTasksListItem from './completed-tasks-list-item';
@@ -7,9 +8,9 @@ type CompletedTasksListProps = {
 }
 
 const CompletedTasksList: FunctionComponent<CompletedTasksListProps> = ({ tasks }) => (
-    <ul className="mb-5">
+    <IonList>
         {tasks.map(task => <CompletedTasksListItem task={task} key={task.id} />)}
-    </ul>
+    </IonList>
 );
 
 export default CompletedTasksList;

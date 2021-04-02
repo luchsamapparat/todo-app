@@ -1,202 +1,217 @@
 {
-  "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/next"
-  },
-  "defaultProject": "todo-app-nextjs",
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "style": "scss",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "scss"
-      },
-      "library": {
-        "style": "scss",
-        "linter": "eslint"
-      }
+    "version": 2,
+    "cli": {
+        "defaultCollection": "@nrwl/next"
     },
-    "@nrwl/next": {
-      "application": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    }
-  },
-  "projects": {
-    "todo-app-nextjs": {
-      "root": "apps/todo-app-nextjs",
-      "sourceRoot": "apps/todo-app-nextjs",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
+    "defaultProject": "todo-app-nextjs",
+    "generators": {
+        "@nrwl/react": {
+            "application": {
+                "style": "scss",
+                "linter": "eslint",
+                "babel": true
+            },
+            "component": {
+                "style": "scss"
+            },
+            "library": {
+                "style": "scss",
+                "linter": "eslint"
+            }
+        },
+        "@nrwl/next": {
+            "application": {
+                "style": "css",
+                "linter": "eslint"
+            }
+        }
+    },
+    "projects": {
+        "todo-app-nextjs": {
             "root": "apps/todo-app-nextjs",
-            "outputPath": "dist/apps/todo-app-nextjs"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "todo-app-nextjs:build",
-            "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "todo-app-nextjs:build:production",
-              "dev": false
-            }
-          }
-        },
-        "export": {
-          "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "todo-app-nextjs:build:production"
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/todo-app-nextjs"],
-          "options": {
-            "jestConfig": "apps/todo-app-nextjs/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/todo-app-nextjs/**/*.{ts,tsx,js,jsx}"]
-          }
-        }
-      }
-    },
-    "todo-app-spring": {
-      "projectType": "application",
-      "root": "apps/todo-app-spring",
-      "sourceRoot": "apps/todo-app-spring/src",
-      "targets": {
-        "run": {
-          "executor": "@nxrocks/nx-spring-boot:run",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "serve": {
-          "executor": "@nxrocks/nx-spring-boot:serve",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "test": {
-          "executor": "@nxrocks/nx-spring-boot:test",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "clean": {
-          "executor": "@nxrocks/nx-spring-boot:clean",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "buildJar": {
-          "executor": "@nxrocks/nx-spring-boot:buildJar",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "buildWar": {
-          "executor": "@nxrocks/nx-spring-boot:buildWar",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "buildImage": {
-          "executor": "@nxrocks/nx-spring-boot:buildImage",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        },
-        "buildInfo": {
-          "executor": "@nxrocks/nx-spring-boot:buildInfo",
-          "options": {
-            "root": "apps/todo-app-spring"
-          }
-        }
-      }
-    },
-    "todo-app-react": {
-      "root": "apps/todo-app-react",
-      "sourceRoot": "apps/todo-app-react/src",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/todo-app-react",
-            "index": "apps/todo-app-react/public/index.html",
-            "main": "apps/todo-app-react/src/index.tsx",
-            "tsConfig": "apps/todo-app-react/tsconfig.app.json",
-            "assets": [],
-            "styles": [],
-            "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+            "sourceRoot": "apps/todo-app-nextjs",
+            "projectType": "application",
+            "targets": {
+                "build": {
+                    "executor": "@nrwl/next:build",
+                    "outputs": [
+                        "{options.outputPath}"
+                    ],
+                    "options": {
+                        "root": "apps/todo-app-nextjs",
+                        "outputPath": "dist/apps/todo-app-nextjs"
+                    },
+                    "configurations": {
+                        "production": {}
+                    }
+                },
+                "serve": {
+                    "executor": "@nrwl/next:server",
+                    "options": {
+                        "buildTarget": "todo-app-nextjs:build",
+                        "dev": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "todo-app-nextjs:build:production",
+                            "dev": false
+                        }
+                    }
+                },
+                "export": {
+                    "executor": "@nrwl/next:export",
+                    "options": {
+                        "buildTarget": "todo-app-nextjs:build:production"
+                    }
+                },
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/apps/todo-app-nextjs"
+                    ],
+                    "options": {
+                        "jestConfig": "apps/todo-app-nextjs/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/todo-app-nextjs/**/*.{ts,tsx,js,jsx}"
+                        ]
+                    }
                 }
-              ]
             }
-          }
         },
-        "serve": {
-          "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "todo-app-react:build"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "todo-app-react:build:production"
+        "todo-app-spring": {
+            "projectType": "application",
+            "root": "apps/todo-app-spring",
+            "sourceRoot": "apps/todo-app-spring/src",
+            "targets": {
+                "run": {
+                    "executor": "@nxrocks/nx-spring-boot:run",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "serve": {
+                    "executor": "@nxrocks/nx-spring-boot:serve",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "test": {
+                    "executor": "@nxrocks/nx-spring-boot:test",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "clean": {
+                    "executor": "@nxrocks/nx-spring-boot:clean",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "buildJar": {
+                    "executor": "@nxrocks/nx-spring-boot:buildJar",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "buildWar": {
+                    "executor": "@nxrocks/nx-spring-boot:buildWar",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "buildImage": {
+                    "executor": "@nxrocks/nx-spring-boot:buildImage",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                },
+                "buildInfo": {
+                    "executor": "@nxrocks/nx-spring-boot:buildInfo",
+                    "options": {
+                        "root": "apps/todo-app-spring"
+                    }
+                }
             }
-          }
         },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/todo-app-react/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/todo-app-react"],
-          "options": {
-            "jestConfig": "apps/todo-app-react/jest.config.js",
-            "passWithNoTests": true
-          }
+        "todo-app-react": {
+            "root": "apps/todo-app-react",
+            "sourceRoot": "apps/todo-app-react/src",
+            "projectType": "application",
+            "targets": {
+                "build": {
+                    "executor": "@nrwl/web:build",
+                    "outputs": [
+                        "{options.outputPath}"
+                    ],
+                    "options": {
+                        "outputPath": "dist/apps/todo-app-react",
+                        "index": "apps/todo-app-react/src/index.html",
+                        "main": "apps/todo-app-react/src/index.tsx",
+                        "tsConfig": "apps/todo-app-react/tsconfig.app.json",
+                        "assets": [
+                            "apps/todo-app-react/src/manifest.json",
+                            "apps/todo-app-react/src/assets"
+                        ],
+                        "styles": [],
+                        "scripts": [],
+                        "webpackConfig": "@nrwl/react/plugins/webpack"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "executor": "@nrwl/web:dev-server",
+                    "options": {
+                        "buildTarget": "todo-app-react:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "todo-app-react:build:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/todo-app-react/**/*.{ts,tsx,js,jsx}"
+                        ]
+                    }
+                },
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/apps/todo-app-react"
+                    ],
+                    "options": {
+                        "jestConfig": "apps/todo-app-react/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
