@@ -28,6 +28,9 @@
   },
   "private": true,
   "dependencies": {
+    "@capacitor/cli": "^2.4.7",
+    "@capacitor/core": "^2.4.7",
+    "@capacitor/ios": "^2.4.7",
     "core-js": "^3.6.5",
     "document-register-element": "1.13.1",
     "javascript-time-ago": "2.3.4",
