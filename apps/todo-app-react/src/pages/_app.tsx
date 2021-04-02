@@ -20,7 +20,7 @@ const App = () => (
     <IonApp>
         <IonReactRouter>
             <IonTabs>
-                <IonRouterOutlet id="main">
+                <IonRouterOutlet>
                     <Route exact path="/">
                         <Tasks />
                     </Route>
