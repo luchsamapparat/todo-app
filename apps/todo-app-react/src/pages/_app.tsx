@@ -12,7 +12,7 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/typography.css';
 import { checkboxOutline, listOutline } from 'ionicons/icons';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import Tasks from './index';
 import CompletedTasks from './tasks/completed';
 
@@ -20,20 +20,23 @@ const App = () => (
     <IonApp>
         <IonReactRouter>
             <IonTabs>
-                <IonRouterOutlet>
-                    <Route exact path="/">
+                <IonRouterOutlet id="main">
+                    <Route exact path="/tasks">
                         <Tasks />
                     </Route>
-                    <Route exact path="/tasks/completed">
+                    <Route exact path="/completed-tasks">
                         <CompletedTasks />
+                    </Route>
+                    <Route exact path="/">
+                        <Redirect to="/tasks" />
                     </Route>
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
-                    <IonTabButton tab="tasks" href="/">
+                    <IonTabButton tab="tasks" href="/tasks">
                         <IonIcon icon={listOutline} />
                         <IonLabel>Tasks</IonLabel>
                     </IonTabButton>
-                    <IonTabButton tab="completedTasks" href="/tasks/completed">
+                    <IonTabButton tab="completedTasks" href="/completed-tasks">
                         <IonIcon icon={checkboxOutline} />
                         <IonLabel>Completed</IonLabel>
                     </IonTabButton>
