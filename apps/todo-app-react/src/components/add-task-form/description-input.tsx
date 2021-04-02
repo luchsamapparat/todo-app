@@ -14,6 +14,9 @@ const DescriptionInput: FunctionComponent<DescriptionInputProps> = ({ value, onC
             <IonItem>
                 <IonInput
                     value={value}
+                    autocapitalize="on"
+                    autocomplete="on"
+                    autocorrect="on"
                     placeholder="Describe your Task"
                     required
                     minlength={1}
